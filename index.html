@@ -1,0 +1,63 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Monster Slayer</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="app" class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="you">
+                    <H1>You</H1>
+                    <div class="H1Div">
+                        <div class="youbar" :style="{width:YouBar+'%'}"><span>{{YouBar}}</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="monster">
+                    <h1>Monster</h1>
+                    <div class="H1Div">
+                        <div class="monsterbar" :style="{width:MonsterBar+'%'}"><span>{{MonsterBar}}</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="ButtonsBox">
+                <div v-if="NewGame" class="col-sm-12">
+                    <button type="button" class="btn start" @click="StartNewGame">START NEW GAME</button>
+                </div>
+                <div v-else="NewGame" class="col-sm-12">
+                    <button type="button" class="btn attack" @click="PlayerAttack">ATTACK</button>
+                    <button type="button" class="btn specialattack" @click="PlayerSpecialAttack">SPECIAL ATTACK</button>
+                    <button type="button" class="btn heal" @click="PlayerHeal">HEAL</button>
+                    <button type="button" class="btn giveup" @click="GiveUp">GIVE UP</button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="attackbox" v-if="attacks.length>0">
+                <template v-for="(i,j) in attacks">
+                        <div v-if="j%2!=0">
+                                <p :class="{Pattack:true}">{{i}}</p>
+                        </div>
+                        <div v-else>
+                                <p :class="{Mattack:true}">{{i}}</p>
+                        </div>
+                    </template>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+<script src="./vue.js"></script>
+
+</html>
